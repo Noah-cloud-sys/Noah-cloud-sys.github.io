@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    
+    <!-- CSS Styles to Style the Layout of the Page -->
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Styling the header and navigation links */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        /* Styling for the navigation links */
+        header nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Hover effect for navigation links */
+        header nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* General styling for sections, initially hidden */
+        section {
+            padding: 20px;
+            text-align: center;
+            display: none; /* Hide all sections by default */
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Form styling */
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        /* Input and textarea styling for the form */
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        /* Button styling */
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation Links -->
+    <header>
+        <h1>My Website</h1>
+        <nav>
+            <!-- Navigation links that call the JavaScript function to switch sections -->
+            <a onclick="showSection('home')">Home</a>
+            <a onclick="showSection('about')">About</a>
+            <a onclick="showSection('contact')">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Home Section: Visible by default when the page loads -->
+    <section id="home" style="display: block;">
+        <h2>Home Page</h2>
+        <p>This is the home page of the website.</p>
+    </section>
+
+    <!-- About Section: Hidden by default, will be shown by JavaScript -->
+    <section id="about">
+        <h2>About Page</h2>
+        <p>This page contains information about the website.</p>
+    </section>
+
+    <!-- Contact Section: Hidden by default, will be shown by JavaScript -->
+    <section id="contact">
+        <h2>Contact Page</h2>
+        <!-- Simple contact form with name, email, and message fields -->
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" required></textarea><br><br>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <!-- Footer Section: Fixed at the bottom of the page -->
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Function to show the selected section and hide the others
+        function showSection(section) {
+            // Hide all sections
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('about').style.display = 'none';
+            document.getElementById('contact').style.display = 'none';
+
+            // Show the selected section by setting its display property to 'block'
+            document.getElementById(section).style.display = 'block';
+        }
+
+        // Form validation logic for the contact form
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            // Get form input values
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let message = document.getElementById("message").value;
+
+            // Check if any of the required fields are empty
+            if (!name || !email || !message) {
+                // Alert the user if fields are missing and prevent form submission
+                alert("Please fill out all fields.");
+                event.preventDefault(); // Prevent the form from submitting
+            } else {
+                // If all fields are filled, show a success message
+                alert("Form submitted successfully!");
+            }
+        });
+    </script>
+</body>
+</html>
